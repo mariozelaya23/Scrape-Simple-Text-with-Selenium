@@ -1,14 +1,22 @@
 from seleium import webdriver
 
-#Set options to make browser easier
-options = webdriver.ChromeOptions()
-options.add_argument("disable-infobars")
-options.add_argument("start-maximized")
-options.add_argument("disable-dev-shm-usage")
-options.add_argument("no-sandbox")
-options.add_experimental_option("excludeSwitches", ["enable-automation"])
-options.add_argument("disable-blink-features=AutomationControlled")
+def get_driver():
+  #Set options to make browser easier
+  options = webdriver.ChromeOptions()
+  options.add_argument("disable-infobars")
+  options.add_argument("start-maximized")
+  options.add_argument("disable-dev-shm-usage")
+  options.add_argument("no-sandbox")
+  options.add_experimental_option("excludeSwitches", ["enable-automation"])
+  options.add_argument("disable-blink-features=AutomationControlled")
 
+  driver = webdriver.Chrome(options=options)
+  driver.get("http://automated.pythonanywhere.com/")
+  return driver
 
-driver = webdriver.Chrome(options)
+def main():
+  driver = get_driver()
+  element = driver.find_element_by_xpath("//h1[contains(text(),'“For the things we have to learn before we can do ')]")
+  return element
 
+print(main())
