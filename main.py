@@ -16,7 +16,7 @@ def get_driver():
 
 def main():
   driver = get_driver()
-  element = driver.find_element_by_xpath("//h1[contains(text(),'“For the things we have to learn before we can do ')]")
+  element = driver.find_element(by="xpath", value="//h1[contains(text(),'“For the things we have to learn before we can do ')]")
   return element
 
 print(main())
