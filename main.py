@@ -14,6 +14,7 @@ def get_driver():
   driver.get("http://automated.pythonanywhere.com/")
   return driver
 
+# Scraping the static text of the website
 def main():
   driver = get_driver()
   element = driver.find_element(by="xpath", value="//h1[contains(text(),'“For the things we have to learn before we can do ')]")
