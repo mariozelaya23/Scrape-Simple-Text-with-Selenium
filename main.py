@@ -1,4 +1,4 @@
-from seleium import webdriver
+from selenium import webdriver
 
 def get_driver():
   #Set options to make browser easier
