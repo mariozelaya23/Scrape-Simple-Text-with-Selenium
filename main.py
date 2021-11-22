@@ -1,4 +1,5 @@
 from selenium import webdriver
+import time
 
 def get_driver():
   #Set options to make browser easier
@@ -11,13 +12,16 @@ def get_driver():
   options.add_argument("disable-blink-features=AutomationControlled")
 
   driver = webdriver.Chrome(options=options)
-  driver.get("http://automated.pythonanywhere.com/")
+  driver.get("https://titan22.com/account/login?return_url=%2Faccount")
   return driver
 
 # Scraping the static text of the website
 def main():
   driver = get_driver()
-  element = driver.find_element(by="xpath", value="//h1[contains(text(),'“For the things we have to learn before we can do ')]")
-  return element.text
+  driver.find_element(by="id", value="CustomerEmail").send_keys("app7flask@gmail.com")
+  time.sleep(2)
+  driver.find_element(by="id", value="CustomerPassword").send_keys()
+  time.sleep(2)
+
 
 print(main())
