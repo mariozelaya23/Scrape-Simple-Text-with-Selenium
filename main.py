@@ -1,4 +1,5 @@
 from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
 import time
 
 def get_driver():
@@ -20,8 +21,10 @@ def main():
   driver = get_driver()
   driver.find_element(by="id", value="CustomerEmail").send_keys("app7flask@gmail.com")
   time.sleep(2)
-  driver.find_element(by="id", value="CustomerPassword").send_keys()
+  driver.find_element(by="id", value="CustomerPassword").send_keys("Password" + Keys.RETURN)
   time.sleep(2)
+  driver.find_element(by="xpath", value="//a[contains(text(),'Contact Us')]").click()
+  print(driver.current_url)
 
 
 print(main())
